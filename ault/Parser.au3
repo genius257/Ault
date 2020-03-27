@@ -103,7 +103,8 @@ Func __AuParse_ParseExpr_Nud(ByRef $lexer, ByRef $aSt, ByRef $tk, $tkPrev)
 				($tkPrev[$AL_TOKI_TYPE] = $AL_TOK_STR) Or _
 				($tkPrev[$AL_TOKI_TYPE] = $AL_TOK_KEYWORD And $tkPrev[$AL_TOKI_DATA] = "True") Or _
 				($tkPrev[$AL_TOKI_TYPE] = $AL_TOK_KEYWORD And $tkPrev[$AL_TOKI_DATA] = "False") Or _
-				($tkPrev[$AL_TOKI_TYPE] = $AL_TOK_KEYWORD And $tkPrev[$AL_TOKI_DATA] = "Default")
+				($tkPrev[$AL_TOKI_TYPE] = $AL_TOK_KEYWORD And $tkPrev[$AL_TOKI_DATA] = "Default") Or _
+				($tkPrev[$AL_TOKI_TYPE] = $AL_TOK_KEYWORD And $tkPrev[$AL_TOKI_DATA] = "Null")
 
 			$iStRet = __AuAST_AddBranchTok($aSt, $tkPrev)
 
