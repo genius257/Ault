@@ -370,6 +370,8 @@ Func __AuParse_ParseLine(ByRef $lexer, ByRef $aSt, ByRef $tk, $fTopLevel = False
 
 				$iStRet = __AuParse_ParseFuncCall($lexer, $aSt, $tk, $iLHS)
 				If @error Then Return SetError(@error, 0, $iStRet)
+			ElseIf $tk[$AL_TOKI_TYPE] = $AL_TOK_EOL Then
+				Return $aSt[0][0]
 			Else
 				; Not a function call or assignment
 				Return SetError(@ScriptLineNumber, 0, _
