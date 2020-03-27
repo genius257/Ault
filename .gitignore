@@ -48,3 +48,6 @@ Temporary Items
 
 # AutoIt Tidy Backup Directory
 Backup
+
+# AutoIt3 Package Manager Directory
+au3pm/
