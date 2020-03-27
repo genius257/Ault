@@ -377,7 +377,7 @@ Func _Ault_LexerStep(ByRef $lex)
                     ExitLoop
                 EndIf
             Case $AL_ST_VARIABLE
-                If $c <> "_" And Not StringIsAlNum($c) Then
+                If $c <> "_" And $c <> "." And Not StringIsAlNum($c) Then ;TODO: maybe the dot notation should be handled in a more special way, instead of seeting the syntax as one complete variable
                     __AuLex_PrevChar($lex)
                     $tokRet[$AL_TOKI_TYPE] = $AL_TOK_VARIABLE
                     ExitLoop
