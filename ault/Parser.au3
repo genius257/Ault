@@ -619,6 +619,23 @@ Func __AuParse_ParseLine(ByRef $lexer, ByRef $aSt, ByRef $tk, $fTopLevel = False
 							$aSt, $iStRet, $lexer, $tkFirst))
 			EndSwitch
 
+		Case $AL_TOK_NUMBER, $AL_TOK_STR
+			Local $tkPrev = $tkFirst, $err, $rbp = 0
+
+			Local $left = __AuParse_ParseExpr_Nud($lexer, $aSt, $tk, $tkPrev)
+			If @error Then Return SetError(@error, 0, $left)
+
+			While __AuParse_ParseExpr_Lbp($tk) > $rbp
+				$tkPrev = $tk
+
+				$err = __AuParse_GetTok($lexer, $tk)
+				If @error Then Return SetError(@error, 0, $err)
+
+				$left = __AuParse_ParseExpr_Led($lexer, $aSt, $tk, $tkPrev, $left)
+				If @error Then Return SetError(@error, 0, $left)
+			WEnd
+
+			Return $left
 		Case Else
 			; Unexpected Token
 			Return SetError(@ScriptLineNumber, 0, _
