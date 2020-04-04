@@ -23,6 +23,8 @@ $a[0] = 0
 $a[1] = 1
 $a[2] = 2
 
+$a = DllCall('shlwapi.dll', 'int', 'StrCmpLogicalW', 'wstr', $l1, 'wstr', $l2)[0]
+
 $a
 
 $b = True
